@@ -1,28 +1,35 @@
-let num1 = prompt("Enter the first number")
-let num2 = prompt("Enter the second number")
+let display = document.getElementById('display');
+let result = document.getElementById('sum-el')
+let currentInput = '';
 
-num1 = Number.parseInt(num1)
-num2 = Number.parseInt(num2)
-
-document.getElementById("num1-el").textContent = num1
-document.getElementById("num2-el").textContent = num2
-
-let sumEl = document.getElementById("sum-el")
-function add() {
-    let result = num1 + num2
-    sumEl.textContent = "Answer : " + result
+function appendNumber(number) {
+    currentInput += number;
+    display.value = currentInput;
 }
 
-function subtract() {
-    let result = num1 - num2
-    sumEl.textContent = "Answer : " + result
+function appendOperator(operator) {
+    currentInput += operator;
+    display.value = currentInput;
 }
 
-function devide() {
-    let result = num1 / num2
-    sumEl.textContent = "Answer : " + result
+function clearDisplay() {
+    currentInput = '';
+    display.value = '';
+    result.textContent = '';
 }
-function multi() {
-    let result = num1 * num2
-    sumEl.textContent = "Answer :" + result
+
+function calculate() {
+  try {
+      let finalResult = eval(currentInput); // Use `eval` (with caution!)
+      if (isNaN(finalResult) || !isFinite(finalResult)) {
+        result.textContent = "Error";
+        return;
+    }
+
+      display.value = finalResult;
+      result.textContent = "Answer : " + finalResult;
+      currentInput = finalResult.toString()
+  } catch(e) {
+    result.textContent = "Error"
+  }
 }

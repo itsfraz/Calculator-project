@@ -1,44 +1,108 @@
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
-    sans-serif;
-    font-weight: bold;
-    /* text-align: center; */
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
 }
 
-.main {
+
+.calculator {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* More refined shadow */
+    padding: 24px; /* Increased padding */
+    width: 320px; /* Slightly wider */
+}
+
+.display {
+    margin-bottom: 18px; /* Increased spacing */
+}
+
+.display input {
     width: 100%;
-    position: absolute;
-    top: 35%;
-    transform: translateX(17%);
+    padding: 16px;
+    text-align: right;
+    font-size: 28px; /* Larger font size */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-button {
-    border: 2px solid blue;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: rgb(19, 18, 18);
-    font-weight: bold;
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+
+.buttons button {
+    padding: 16px;
     font-size: 20px;
-    width: 200px;
-    margin: 10px;
-    border-radius: 25px 25px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    background-color: #eee;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add  a slight shadow */
 }
 
-.number {
-    padding-left: 25%;
-    padding-bottom: 20px;
-    text-align: 50%;
-    font-size: 65px;
 
+.buttons button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-span {
-    /* font-size: 25px; */
-    padding-left: 25px;
+/* Use CSS Variables for theme */
+:root {
+    --primary-color: #5c6bc0;
+    --secondary-color: #ffb74d;
+    --error-color:#f44336;
 }
 
-#sum-el {
-    padding-left: 25%;
-    font-size: 25px;
+
+.buttons button.operator {
+    background-color: var(--secondary-color);
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.buttons button.operator:hover {
+    background-color: #ffa726;
+}
+
+.buttons button.equals {
+    background-color: var(--primary-color);
+    color: #fff;
+    grid-column: 3 / 5;
+}
+
+.buttons button.equals:hover {
+    background-color: #3949ab;
+}
+
+.buttons button.clear {
+    background-color: var(--error-color);
+    color: #fff;
+}
+
+.buttons button.clear:hover {
+    background-color: #d32f2f;
+}
+
+
+.result {
+    margin-top: 15px;
+    text-align: right;
+    font-size: 20px;
+    color: #555;
+    text-align: left;
+     margin-left: 10px;
 }
